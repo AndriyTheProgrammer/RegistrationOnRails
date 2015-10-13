@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+    <h2>Hello <%= current_user.email%></h2>
+    <h3>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+    </h3>
+    <h3><%= link_to('All books', '/')  %></h3>
+
+    <div class="book">
+    <h3>Title: <%= @book.name %></h3>
+    <h5>Author: <%= @book.author %></h5>
+    <h5>Description: <%= @book.description %></h5>
+    <h5>Pages: <%= @book.pages_count %></h5>
+    <p><%= @book.book_text %></p>
+      <% if user_signed_in? && current_user.role == 'Developer' %>
+      <%= button_to 'Delete', @book, :method => :delete %>
+      <% end %>
+    </div>
+
+<% else %>
+    <h1>
+      Fuck out to login page! You must be logged to read this book
+      <%= link_to('Login', new_user_session_path)  %>
+    </h1>
+<% end %>
+

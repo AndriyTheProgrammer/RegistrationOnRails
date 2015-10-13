@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :customer
   accepts_nested_attributes_for :developer
+
+  enum role: [ 'Customer', 'Developer']
 end

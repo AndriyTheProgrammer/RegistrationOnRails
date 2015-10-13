@@ -5,12 +5,18 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
 
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
    root 'pages#index'
-
+   get 'pages/new' => 'pages#new'
+   get 'books/:id' => 'pages#show'
+   post 'pages/new' => 'pages#create'
+   delete 'books/:id' => 'pages#destroy'
+   resources :books
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
