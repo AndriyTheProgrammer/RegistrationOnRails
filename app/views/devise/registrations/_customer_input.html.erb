@@ -1,6 +1,7 @@
-<h1>DEVELOPER</h1>
+<h1>CUSTOMER</h1>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
+
 
 
     <div class="field">
@@ -22,20 +23,18 @@
     </div>
 
     <div class="field">
-      <%= f.hidden_field :role, :value => 1 %>
+      <%= f.hidden_field :role, :value => 0 %>
     </div>
-    <% f.object.build_developer if f.object.developer.nil? %>
-    <%= f.fields_for :developer do |dev_form| %>
+    <% f.object.build_customer if f.object.customer.nil? %>
+    <%= f.fields_for :customer do |customer_form| %>
         <div class="field">
-          <%= dev_form.label :programming_language %>
-          <%= dev_form.text_field :programming_language %>
+          <%= customer_form.label :is_idiot %>
+          <%= customer_form.check_box :is_idiot %>
         </div>
     <% end %>
 
-
-
     <div class="actions">
-      <%= f.submit 'Sign up', :id=> 'sign_up_developer' %>
+      <%= f.submit 'Sign up', :id=> 'sign_up_customer' %>
     </div>
 
 <% end %>

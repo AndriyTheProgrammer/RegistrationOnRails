@@ -3,4 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_one :developer
+  has_one :customer
+
+  accepts_nested_attributes_for :customer
+  accepts_nested_attributes_for :developer
 end
